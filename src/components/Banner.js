@@ -4,7 +4,7 @@ import Carousel from "./Carousel";
 function Banner() {
   return (
     <div className="banner text-center text-white ">
-      <h2 className="text-[40px] pt-[50px] font-bold">CryptoHunt</h2>
+      <h2 className="text-2xl pt-[50px] font-bold">CryptoHunt</h2>
       <p className="text-sm">
         GET ALL THE INFO REGARDING YOUR FAVORITE CRYPTO CURRENCY
       </p>

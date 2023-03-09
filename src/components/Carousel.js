@@ -11,13 +11,11 @@ function Carousel() {
       )
       .then((data) => {
         setTrendCoins(data.data);
-        console.log(data);
       });
   };
   useEffect(() => {
     fetchTrendingCoins();
-    console.log(trendCoins);
-  }, []); //always load this fetchTrendingCoins function
+  }, []);
 
   const items = trendCoins.map((item) => {
     return (
