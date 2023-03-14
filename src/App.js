@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import { Routes, Route } from "react-router-dom";
+import News from "./pages/News";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/news" element={<News />} />
       </Routes>
     </div>
   );
