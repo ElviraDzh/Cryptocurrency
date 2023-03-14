@@ -35,7 +35,7 @@ function News() {
   if (!news) return <Loader />;
   else if (news)
     return (
-      <div className="text-white cursor-pointer">
+      <div className="text-white cursor-pointer font-montserrat">
         <h1 className="text-center text-4xl uppercase font-bold">
           Crypto News
         </h1>
@@ -48,7 +48,7 @@ function News() {
                 className="border border-gray-400 m-2 p-2 rounded hover:text-[rgb(234,179,8)]"
               >
                 <div>
-                  <h2 className="font-bold">{item.name}</h2>
+                  <h2 className="font-bold text-[1.1çem]">{item.name}</h2>
                   {/* <img src={item.image.thumbnail.contentUrl} alt="" /> */}
                   <div>
                     {/* <img
