@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
-import noPhoto from "../assets/no-photo.svg";
 
 function News() {
   const [news, setNews] = useState([]);
@@ -53,7 +52,7 @@ function News() {
                 <img
                   src={
                     item.image === undefined
-                      ? noPhoto
+                      ? "https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=News"
                       : item.image.thumbnail.contentUrl
                   }
                   className="w-20 h-20"
@@ -64,10 +63,10 @@ function News() {
                 <img
                   src={
                     item.provider[0].image === undefined
-                      ? noPhoto
+                      ? "No photo"
                       : item.provider[0].image.thumbnail.contentUrl
                   }
-                  alt=""
+                  alt="No photo"
                   className="w-5 h-5"
                 />
                 <span className="text-sm  block my-5 italic">

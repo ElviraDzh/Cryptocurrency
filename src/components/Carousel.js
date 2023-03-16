@@ -24,9 +24,7 @@ function Carousel() {
         <div>
           <p>
             <span className="uppercase">{item.symbol}</span>
-            <span className="text-red-600 ml-2 font-bold">
-              {item.price_change_percentage_24h.toFixed(2)}%
-            </span>
+            <span>{item.price_change_percentage_24h.toFixed(2)}%</span>
           </p>
           <p className="text-sm">${item.low_24h.toLocaleString()}</p>
         </div>
