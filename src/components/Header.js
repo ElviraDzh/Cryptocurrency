@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
   return (
-    <header className="flex items-center px-10 py-5 font-bold">
-      <h1 className="text-yellow-400 flex-grow text-4xl">CRYPTOHUNT</h1>
+    <header className="flex items-center px-10 py-5 font-bold font-montserrat">
+      <h1 className="text-yellow-400 flex-grow text-3xl">CryptoHunt</h1>
       <nav>
         <ul className="text-white flex item-center space-x-5 text-[18px]">
           <li

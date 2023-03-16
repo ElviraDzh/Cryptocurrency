@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 
 function News() {
-  const [news, setNews] = useState();
+  const [news, setNews] = useState([]);
   const options = {
     method: "GET",
     url: "https://bing-news-search1.p.rapidapi.com/news/search",
@@ -32,41 +32,41 @@ function News() {
       });
   }, []);
 
-  if (!news) return <Loader />;
-  else if (news)
-    return (
-      <div className="text-white cursor-pointer font-montserrat">
-        <h1 className="text-center text-4xl uppercase font-bold">
-          Crypto News
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {news.map((item) => {
-            return (
-              <a
-                href={item.url}
-                target="_blank"
-                className="border border-gray-400 m-2 p-2 rounded hover:text-[rgb(234,179,8)]"
-              >
+  if (!news > 0) return <Loader />;
+
+  return (
+    <div className="text-white cursor-pointer font-montserrat">
+      <h1 className="text-center text-4xl uppercase font-bold mb-4">
+        Crypto News
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {news.map((item) => {
+          return (
+            <a
+              href={item.url}
+              target="_blank"
+              className="border border-gray-400 m-2 p-2 rounded hover:text-[rgb(234,179,8)]"
+            >
+              <div>
+                <h2 className="font-bold text-[1.1em]">{item.name}</h2>
+                {/* <img src={item.image.thumbnail.contentUrl} alt="" /> */}
                 <div>
-                  <h2 className="font-bold text-[1.1çem]">{item.name}</h2>
-                  {/* <img src={item.image.thumbnail.contentUrl} alt="" /> */}
-                  <div>
-                    {/* <img
+                  {/* <img
                       src={item.provider[0].image.thumbnail.contentUrl}
                       alt=""
                     /> */}
-                    <span className="text-sm  block my-5 italic">
-                      {item.provider[0].name}
-                    </span>
-                  </div>
-                  <p className="text-justify">{item.description}</p>
+                  <span className="text-sm  block my-5 italic">
+                    {item.provider[0].name}
+                  </span>
                 </div>
-              </a>
-            );
-          })}
-        </div>
+                <p className="text-justify">{item.description}</p>
+              </div>
+            </a>
+          );
+        })}
       </div>
-    );
+    </div>
+  );
 }
 
 export default News;
