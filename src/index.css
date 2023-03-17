@@ -11,6 +11,9 @@
   height: 32px;
   width: 32px;
 }
+a {
+  color: rgb(255, 213, 3);
+}
 .loader-4::after {
   content: "";
   display: block;

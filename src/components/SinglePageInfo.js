@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Parser from "html-react-parser";
 
 function SinglePageInfo(props) {
   const [coin, setCoin] = useState([]);
@@ -7,7 +8,7 @@ function SinglePageInfo(props) {
     axios
       .get("https://api.coingecko.com/api/v3/coins/" + props.params.id)
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data.description.en);
         setCoin(data.data);
       });
   };
@@ -28,9 +29,11 @@ function SinglePageInfo(props) {
       />
       <h1 className="text-2xl font-bold">{coin.name}</h1>
       <p className="my-4 text-sm w-[50%] text-center">
-        {coin.description === undefined
-          ? "No info"
-          : coin.description.uk.split(".").shift()}
+        {Parser(
+          coin.description === undefined
+            ? "No info"
+            : coin.description.uk.split(/\. [A-Z0-9]/)[0] + "."
+        )}
       </p>
       <p className="text-bold">
         Rank: <span>{coin.market_cap_rank}</span>
