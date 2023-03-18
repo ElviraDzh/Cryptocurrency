@@ -58,7 +58,7 @@ function CoinList() {
           {filteredCoins.map((item) => {
             return (
               <tr
-                className="border-b border-gray-500 text-right text-sm block-inline  hover:bg-neutral-800"
+                className="border-b border-gray-500 text-right text-sm block-inline  hover:bg-neutral-800 hover: cursor-pointer"
                 onClick={() => {
                   navigate("/coin/" + item.id);
                 }}
@@ -90,5 +90,3 @@ function CoinList() {
 }
 
 export default CoinList;
-
-//https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1000&page=1&sparkline=false

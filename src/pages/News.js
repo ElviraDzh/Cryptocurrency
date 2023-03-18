@@ -45,7 +45,7 @@ function News() {
             <a
               href={item.url}
               target="_blank"
-              className="border border-gray-400 m-2 p-2 rounded hover:text-[rgb(234,179,8)]"
+              className="news_link border border-gray-400 m-2 p-2 rounded hover:text-[rgb(234,179,8)]"
             >
               <div className="flex">
                 <h2 className="font-bold text-[1.1em] w-[80%]">{item.name}</h2>

@@ -4,11 +4,30 @@ import axios from "axios";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import Loader from "./Loader";
+import SinglePageBtn from "./SinglePageBtn";
 
 function SinglePageChart(props) {
   const [historicalData, setHistoricalData] = useState([]);
   const [days, setDays] = useState(1);
 
+  const btnData = [
+    {
+      label: "24 Hours",
+      days: 1,
+    },
+    {
+      label: "30 Days",
+      days: 30,
+    },
+    {
+      label: "3 Months",
+      days: 90,
+    },
+    {
+      label: "1 Year",
+      days: 365,
+    },
+  ];
   useEffect(() => {
     axios
       .get(
@@ -17,10 +36,10 @@ function SinglePageChart(props) {
       .then((data) => {
         setHistoricalData(data.data.prices);
       });
-  }, []);
+  }, [days]);
 
   return (
-    <div className="w-[50%]">
+    <div className="w-[60%]">
       {!historicalData ? (
         <Loader />
       ) : (
@@ -54,6 +73,17 @@ function SinglePageChart(props) {
           }}
         />
       )}
+      <div className="flex text-white justify-between mt-5">
+        {btnData.map((item) => {
+          return (
+            <SinglePageBtn
+              label={item.label}
+              selected={item.days === days}
+              onClick={() => setDays(item.days)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

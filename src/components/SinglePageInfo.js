@@ -17,7 +17,7 @@ function SinglePageInfo(props) {
   }, []);
 
   return (
-    <div className="text-white font-montserrat flex flex-col items-center mt-[100px] py-10">
+    <div className="text-white font-montserrat flex flex-col items-center">
       <img
         src={
           coin.image === undefined
@@ -28,7 +28,7 @@ function SinglePageInfo(props) {
         className="w-20 h-20"
       />
       <h1 className="text-2xl font-bold">{coin.name}</h1>
-      <p className="my-4 text-sm w-[50%] text-center">
+      <p className="coin_info my-4 text-sm text-center max-w-[70%]">
         {Parser(
           coin.description === undefined
             ? "No info"
