@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "./Loader";
-import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 function CoinList() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
   const fetchTrendingCoins = () => {
@@ -55,36 +56,48 @@ function CoinList() {
           </tr>
         </thead>
         <tbody>
-          {filteredCoins.map((item) => {
-            return (
-              <tr
-                className="border-b border-gray-500 text-right text-sm block-inline  hover:bg-neutral-800 hover: cursor-pointer"
-                onClick={() => {
-                  navigate("/coin/" + item.id);
-                }}
-              >
-                <td className="flex items-center text-left pl-3 py-2">
-                  <div>
-                    <img src={item.image} className="w-10 h-10 mr-2" />
-                  </div>
-                  <div>
-                    <p className="uppercase">{item.symbol}</p>
-                    <p className="text-[10px]">{item.name}</p>
-                  </div>
-                </td>
-                <td>${item.current_price.toLocaleString()}</td>
-                <td>{item.price_change_percentage_24h.toFixed(2)}%</td>
-                <td className="pr-2">
-                  {Math.floor(
-                    parseInt(item.market_cap) / 1000000
-                  ).toLocaleString()}
-                  M
-                </td>
-              </tr>
-            );
-          })}
+          {filteredCoins
+            .slice((page - 1) * 10, (page - 1) * 10 + 10)
+            .map((item) => {
+              return (
+                <tr
+                  className="border-b border-gray-500 text-right text-sm block-inline  hover:bg-neutral-800 hover: cursor-pointer"
+                  onClick={() => {
+                    navigate("/coin/" + item.id);
+                  }}
+                >
+                  <td className="flex items-center text-left pl-3 py-2">
+                    <div>
+                      <img src={item.image} className="w-10 h-10 mr-2" />
+                    </div>
+                    <div>
+                      <p className="uppercase">{item.symbol}</p>
+                      <p className="text-[10px]">{item.name}</p>
+                    </div>
+                  </td>
+                  <td>${item.current_price.toLocaleString()}</td>
+                  <td>{item.price_change_percentage_24h.toFixed(2)}%</td>
+                  <td className="pr-2">
+                    {Math.floor(
+                      parseInt(item.market_cap) / 1000000
+                    ).toLocaleString()}
+                    M
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
+      <ReactPaginate
+        pageCount={coins.length / 10}
+        onPageChange={(x) => setPage(x.selected + 1)}
+        className="flex space-x-5 mt-5 mx-auto w-min text-[rgb(250,204,20)] text-sm items-center"
+        previousLabel="<"
+        nextLabel=">"
+        pageClassName="hover:bg-neutral-600 w-8 h-8 rounded-[50%] flex justify-center items-center"
+        previousClassName="hover:bg-neutral-600 w-8 h-8 rounded-[50%] flex justify-center items-center"
+        nextClassName="hover:bg-neutral-600 w-8 h-8 rounded-[50%] flex justify-center items-center"
+      />
     </div>
   );
 }
