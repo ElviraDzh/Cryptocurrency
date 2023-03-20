@@ -59,6 +59,8 @@ function CoinList() {
           {filteredCoins
             .slice((page - 1) * 10, (page - 1) * 10 + 10)
             .map((item) => {
+              const growth_percentage =
+                item.price_change_percentage_24h.toFixed(2);
               return (
                 <tr
                   className="border-b border-gray-500 text-right text-sm block-inline  hover:bg-neutral-800 hover: cursor-pointer"
@@ -76,7 +78,18 @@ function CoinList() {
                     </div>
                   </td>
                   <td>${item.current_price.toLocaleString()}</td>
-                  <td>{item.price_change_percentage_24h.toFixed(2)}%</td>
+                  <td
+                    className={
+                      growth_percentage > 0
+                        ? "text-green-400 font-bold"
+                        : "text-red-700 font-bold"
+                    }
+                  >
+                    {growth_percentage > 0
+                      ? "+" + growth_percentage
+                      : growth_percentage}
+                    %
+                  </td>
                   <td className="pr-2">
                     {Math.floor(
                       parseInt(item.market_cap) / 1000000

@@ -18,13 +18,25 @@ function Carousel() {
   }, []);
 
   const items = trendCoins.map((item) => {
+    const growth_percentage = item.price_change_percentage_24h.toFixed(2);
     return (
       <div className="flex flex-col items-center mt-5">
         <img src={item.image} className="w-20 h-20" />
         <div>
           <p>
-            <span className="uppercase">{item.symbol}</span>
-            <span>{item.price_change_percentage_24h.toFixed(2)}%</span>
+            <span className="uppercase mr-2">{item.symbol}</span>
+            <span
+              className={
+                growth_percentage > 0
+                  ? "text-green-400 font-bold"
+                  : "text-red-700 font-bold"
+              }
+            >
+              {growth_percentage > 0
+                ? "+" + growth_percentage
+                : growth_percentage}
+              %
+            </span>
           </p>
           <p className="text-sm">${item.low_24h.toLocaleString()}</p>
         </div>
