@@ -35,7 +35,7 @@ function CoinList() {
 
   return (
     <div className="w-[90%] mx-auto font-montserrat text-white">
-      <h2 className="text-center py-3 text-xl">
+      <h2 className="text-center py-3 text-sm md:text-xl">
         Cryptocurrency Prices by Market Cap
       </h2>
       <div>
@@ -49,7 +49,9 @@ function CoinList() {
       <table className="w-full block-inline px-3 mt-3">
         <thead className="bg-[rgb(250,204,20)] text-black">
           <tr className="border-b border-gray-500 text-right block-inline text-sm py-3 ">
-            <th className="text-left p-2 first:rounded-tl-lg">Coin</th>
+            <th className="md:text-left p-2 first:rounded-tl-lg text-center">
+              Coin
+            </th>
             <th>Price</th>
             <th>24h Change</th>
             <th className="rounded-tr-lg pr-2">Market Cap</th>
@@ -63,7 +65,7 @@ function CoinList() {
                 item.price_change_percentage_24h.toFixed(2);
               return (
                 <tr
-                  className="border-b border-gray-500 text-right text-sm block-inline  hover:bg-neutral-800 hover: cursor-pointer"
+                  className="border-b border-gray-500 text-right md:text-sm text-[0.7em] block-inline  hover:bg-neutral-800 hover: cursor-pointer"
                   onClick={() => {
                     navigate("/coin/" + item.id);
                   }}
@@ -104,7 +106,7 @@ function CoinList() {
       <ReactPaginate
         pageCount={coins.length / 10}
         onPageChange={(x) => setPage(x.selected + 1)}
-        className="flex space-x-5 mt-5 mx-auto w-min text-[rgb(250,204,20)] text-sm items-center"
+        className="flex space-x-2 md:space-x-5 mt-5 mx-auto pb-3 w-min text-[rgb(250,204,20)] md:text-sm text-[0.7em] items-center"
         previousLabel="<"
         nextLabel=">"
         pageClassName="hover:bg-neutral-600 w-8 h-8 rounded-[50%] flex justify-center items-center"

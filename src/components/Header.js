@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className="flex items-center px-10 py-5 font-bold font-montserrat">
       <h1
-        className="text-yellow-400 flex-grow text-3xl"
+        className="text-yellow-400 flex-grow text-2xl md:text-3xl "
         onClick={() => {
           navigate("/");
         }}
@@ -14,7 +14,7 @@ function Header() {
         CryptoHunt
       </h1>
       <nav>
-        <ul className="text-white flex item-center space-x-5 text-[18px]">
+        <ul className="text-white flex item-center space-x-5 text-sm md:text-[1.2em]">
           <li
             onClick={() => {
               navigate("/");
@@ -22,7 +22,7 @@ function Header() {
           >
             COINS
           </li>
-          <li>EXCHANGES</li>
+          {/* <li>EXCHANGES</li> */}
           <li
             onClick={() => {
               navigate("/news");

@@ -36,8 +36,8 @@ function News() {
 
   return (
     <div className="text-white cursor-pointer font-montserrat">
-      <h1 className="text-center text-4xl uppercase font-bold mb-4">
-        Crypto News
+      <h1 className="text-center text-3xl md:text-4xl uppercase font-bold mb-4">
+        CryptoNews
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {news.map((item) => {
@@ -45,7 +45,7 @@ function News() {
             <a
               href={item.url}
               target="_blank"
-              className="news_link border border-gray-400 m-2 p-2 rounded hover:text-[rgb(234,179,8)]"
+              className="news_link text-sm md:text-[1em] border border-gray-400 m-2 p-2 rounded hover:text-[rgb(234,179,8)]"
             >
               <div className="flex">
                 <h2 className="font-bold text-[1.1em] w-[80%]">{item.name}</h2>

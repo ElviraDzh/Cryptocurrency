@@ -21,9 +21,9 @@ function Carousel() {
     const growth_percentage = item.price_change_percentage_24h.toFixed(2);
     return (
       <div className="flex flex-col items-center mt-5">
-        <img src={item.image} className="w-20 h-20" />
+        <img src={item.image} className="w-[3.8em] h-[3.8em] md:w-20 md:h-20" />
         <div>
-          <p>
+          <p className="text-sm md:text-[1em]">
             <span className="uppercase mr-2">{item.symbol}</span>
             <span
               className={

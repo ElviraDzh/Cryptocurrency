@@ -39,7 +39,7 @@ function SinglePageChart(props) {
   }, [days]);
 
   return (
-    <div className="w-[60%]">
+    <div className="w-full md:w-[60%] ">
       {!historicalData ? (
         <Loader />
       ) : (
